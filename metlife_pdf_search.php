@@ -1,27 +1,39 @@
 <?php
 
 /**
- * Plugin Name: MetLife PDF Search 
+ * Plugin Name: MetLife PDF Search
  * Description: Creates a PDF post type for better searchability.
  * Version: 0.1
  * Author: James Boynton
  * License: GPL2
  */
 
-require_once plugin_dir_path(__FILE__) . 'src/classes/Config.php';
-require_once plugin_dir_path(__FILE__) . 'src/classes/Helpers.php';
+include 'vendor/autoload.php';
+
 require_once plugin_dir_path(__FILE__) . 'src/classes/Activation.php';
-require_once plugin_dir_path(__FILE__) . 'src/classes/JsonManifest.php';
 require_once plugin_dir_path(__FILE__) . 'src/classes/Assets.php';
+require_once plugin_dir_path(__FILE__) . 'src/classes/Config.php';
+require_once plugin_dir_path(__FILE__) . 'src/classes/CustomPost.php';
+require_once plugin_dir_path(__FILE__) . 'src/classes/Helpers.php';
+require_once plugin_dir_path(__FILE__) . 'src/classes/JsonManifest.php';
+require_once plugin_dir_path(__FILE__) . 'src/classes/MetaBox.php';
+require_once plugin_dir_path(__FILE__) . 'src/classes/ParserManager.php';
 require_once plugin_dir_path(__FILE__) . 'src/classes/ShortcodePDFSearch.php';
 require_once plugin_dir_path(__FILE__) . 'src/classes/Updater.php';
+require_once plugin_dir_path(__FILE__) . 'src/classes/Uploader.php';
 
-use JB\Plugin;
-use JB\Plugin\JsonManifest;
-use JB\Plugin\Config;
-use JB\Plugin\Assets;
-use JB\Plugin\Activation;
-use JB\Plugin\ShortcodePDFSearch;
+use JB\MPS;
+use JB\MPS\Activation;
+use JB\MPS\Assets;
+use JB\MPS\Config;
+use JB\MPS\CustomPost;
+use JB\MPS\JsonManifest;
+use JB\MPS\MetaBox;
+use JB\MPS\ParserManager;
+use JB\MPS\ShortcodePDFSearch;
+use JB\MPS\Uploader;
+
+use Smalot\PdfParser;
 
 add_action('init', function () {
 	$paths = [
@@ -32,10 +44,11 @@ add_action('init', function () {
 	$manifest = new JsonManifest("{$paths['dir.plugin']}dist/assets.json", "{$paths['uri.plugin']}/dist");
 	Config::setManifest($manifest);
 
+  CustomPost::init();
 	Assets::init($manifest);
 	ShortcodePDFSearch::init();
 
-	define('WP_GITHUB_FORCE_UPDATE', true);
+	define('MPS_WP_GITHUB_FORCE_UPDATE', true);
 
 	if (is_admin()) { // note the use of is_admin() to double check that this is happening in the admin
 		$config = array(
@@ -55,7 +68,10 @@ add_action('init', function () {
 	}
 });
 
-register_activation_hook(__FILE__, function () {
+register_activation_hook(__FILE__, function() {
 	Activation::init();
+  flush_rewrite_rules();
 });
- 
+
+new Metabox();
+

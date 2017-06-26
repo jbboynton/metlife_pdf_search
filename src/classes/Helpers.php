@@ -1,7 +1,5 @@
 <?php
 
-namespace JB\Plugins;
+namespace JB\MPS;
 
-class Helpers {
-// Put all plugin helper functions here
-}
+class Helpers {}

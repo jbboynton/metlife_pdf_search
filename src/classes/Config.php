@@ -1,6 +1,6 @@
 <?php
 
-namespace JB\Plugin;
+namespace JB\MPS;
 
 class Config {
 	protected static $manifest;

@@ -1,10 +1,10 @@
 <?php
 
-namespace JB\Plugin;
+namespace JB\MPS;
 
 class ShortcodePDFSearch {
 	public static function init() {
-		add_shortcode('mps_search', array('JB\Plugin\ShortcodePDFSearch', 'render'));
+		add_shortcode('mps_search', array('JB\MPS\ShortcodePDFSearch', 'render'));
 	}
 
 	public static function render($args, $content = "") {

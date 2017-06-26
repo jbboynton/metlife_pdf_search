@@ -1,7 +1,7 @@
 <?php
 // @codingStandardsIgnoreStart
 
-namespace JB\Plugin;
+namespace JB\MPS;
 
 // Prevent loading this file directly and/or if the class is already defined
 if ( ! defined( 'ABSPATH' ) || class_exists( 'WPGitHubUpdater' ) || class_exists( 'WP_GitHub_Updater' ) )
@@ -131,7 +131,7 @@ class GithubUpdater {
 	 * @return bool overrule or not
 	 */
 	public function overrule_transients() {
-		return ( defined( 'WP_GITHUB_FORCE_UPDATE' ) && WP_GITHUB_FORCE_UPDATE );
+		return ( defined( 'MPS_WP_GITHUB_FORCE_UPDATE' ) && MPS_WP_GITHUB_FORCE_UPDATE );
 	}
 
 

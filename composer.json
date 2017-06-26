@@ -13,5 +13,7 @@
             "email": "james.boynton0@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+       "smalot/pdfparser": "*"
+    }
 }
