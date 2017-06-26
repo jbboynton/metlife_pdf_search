@@ -1,0 +1,36 @@
+{
+    "root": true,
+    "extends": "xo",
+    "rules": {
+        "key-spacing": 0,
+        "no-multi-spaces": 0,
+        "no-multiple-empty-lines": 0,
+        "new-cap": [
+            "error",
+            {
+                "capIsNew": false
+            }
+        ]
+    },
+    "env": {
+        "node": true,
+        "es6": true,
+        "amd": true,
+        "browser": true,
+        "jquery": true
+    },
+    "globals": {
+        "wp": true,
+        "alert": true
+    },
+    "plugins": [
+        "import",
+    ],
+    "settings": {
+        "import/core-modules": [],
+        "import/ignore": [
+            "node_modules",
+            "\\.(coffee|scss|css|less|hbs|svg|json)$"
+        ]
+    }
+}
