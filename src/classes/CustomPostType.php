@@ -2,8 +2,10 @@
 
 namespace JB\MPS;
 
-class CustomPost {
+class CustomPostType {
+
   public static function init() {
+
     $labels = array(
       'name' => 'PDFs',
       'singular_name' => 'PDF',
@@ -55,3 +57,4 @@ class CustomPost {
     register_post_type('pdf', $args);
   }
 }
+

@@ -8,6 +8,8 @@
 </form>
 <br><hr><br>
 <p class="description">PDF Preview:</p>
-<textarea disabled="disabled" style="width: 100%;resize: none;min-height: 200px;"><?php echo get_post_meta(get_the_ID(), 'pdf_contents', true) ?></textarea>
+<textarea disabled="disabled" style="width: 100%;resize: none;min-height: 200px;">
+  <?php echo get_post_meta(get_the_ID(), 'pdf_contents', true) ?>
+</textarea>
 
 
