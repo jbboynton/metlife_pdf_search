@@ -1,12 +1,8 @@
 {
   "name": "jbboynton/metlife_pdf_search",
-	"version" : "0.1.0",
+	"version" : "1.0",
     "description": "Custom PDF post type for better searching.",
     "type": "wordpress-plugin",
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^2.8",
-        "phpunit/phpunit": "^5.7"
-    },
     "authors": [
         {
             "name": "James Boynton",
