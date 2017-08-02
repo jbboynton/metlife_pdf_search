@@ -79,7 +79,7 @@ class MetaBox {
         "trying to upload is a PDF document, and has a <code>.pdf</code> " .
         "extension.";
       ?>
-        <div class="error">
+        <div class="notice notice-error is-dismissible">
           <p><?php echo $message; ?></p>
         </div>
       <?php

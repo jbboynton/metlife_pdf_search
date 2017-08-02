@@ -2,9 +2,6 @@
 
 namespace JB\MPS;
 
-use \Smalot\PdfParser\Parser;
-use \Smalot\PdfParser\Font;
-
 class ParserManager {
 
   private $pdf_path;
