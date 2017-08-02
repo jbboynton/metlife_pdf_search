@@ -2,8 +2,6 @@
 
 namespace JB\MPS;
 
-use JB\MPS\Uploader;
-
 class MetaBox {
 
   private $post_types;
@@ -42,6 +40,10 @@ class MetaBox {
   }
 
   public function save($post_id) {
+    if (!$this->is_pdf_post($post_id)) {
+      return;
+    }
+
     $pdf = new PDF($post_id);
 
     if ($pdf->save()) {
@@ -58,6 +60,10 @@ class MetaBox {
     } else {
       $this->create_save_error();
     }
+  }
+
+  private function is_pdf_post($id) {
+    return (get_post_type($id) == 'pdf' ? true : false);
   }
 
   private function create_save_error() {
