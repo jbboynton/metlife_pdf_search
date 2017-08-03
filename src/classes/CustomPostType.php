@@ -20,7 +20,7 @@ class CustomPostType {
       'search_items' => 'Search PDFs',
       'parent_item_colon' => 'Parent PDFs:',
       'not_found' => 'No PDFs found.',
-      'not_found_in_trash' => 'No testimonials found in Trash.'
+      'not_found_in_trash' => 'No PDFs found in Trash.'
     );
 
     $taxonomies = array(
